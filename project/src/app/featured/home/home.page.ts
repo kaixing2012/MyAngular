@@ -11,7 +11,7 @@ export class HomePage implements OnInit {
   subscription = new Subscription();
 
   form = new FormGroup({
-    ccy: new FormControl({ value: 0, disabled: false }),
+    ccy: new FormControl({ value: undefined, disabled: false }),
   });
   active = 1;
   decimalPlace = 4;

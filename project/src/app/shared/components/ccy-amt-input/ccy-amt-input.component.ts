@@ -20,6 +20,7 @@ import { ThousandthsInputFormatDirective } from '@shared/directives/input-limit/
   ],
 })
 export class CcyAmtInputComponent implements OnChanges, AfterViewInit, ControlValueAccessor, Validator {
+  @Input() id: any;
   @Input() class: any;
   @Input() style: any;
 
