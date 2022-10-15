@@ -3,17 +3,6 @@
 
   <section>
     <router-outlet></router-outlet>
-
-    <form [formGroup]="form">
-      <app-ccy-amt-input
-        formControlName="test"
-        [placeholder]="'請輸入申購單位數'"
-        [decimalPlace]="2"
-        [minAmt]="0"
-        (blur)="onBlurGetFeeInfo()"
-      >
-      </app-ccy-amt-input>
-    </form>
   </section>
 
   <footer></footer>

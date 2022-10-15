@@ -130,8 +130,6 @@ export class ThousandthsInputFormatDirective extends BaseInputLimitDirective imp
 
   // 加入千分位
   addThousandths(numberString: string, thousandths: string): string {
-    console.log(thousandths)
-    
     const strArr = numberString
       .split('')
       .reverse();
