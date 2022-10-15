@@ -1,0 +1,20 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+
+  "editor.fontSize": 16,
+  "editor.fontWeight": "500",
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  "editor.autoClosingBrackets": "languageDefined",
+  "editor.autoClosingQuotes": "languageDefined",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "prettier.trailingComma": "all",
+  "prettier.singleQuote": true,
+"prettier.printWidth": 30000,
+"[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+}

@@ -1,0 +1,17 @@
+<input #ccyAmtInput
+  type="text"
+  [class]="class"
+  [style]="style"
+  appThousandthsInputFormat
+  appDecimalPlaceInputLimit
+  appInputLengthLimit
+  appChineseInputLimit
+  [value]="value"
+  [thousandths]="thousandths"
+  [disabled]="disabled"
+  [placeholder]="placeholder"
+  [decimalPlace]="decimalPlace"
+  [maxLength]="maxLength"
+  [isMaxLenIncludedDecimals]="isMaxLenIncludedDecimals"
+  (blur)="onBlur()"
+>
