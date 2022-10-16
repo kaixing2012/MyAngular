@@ -1,0 +1,18 @@
+<ng-container *ngIf="this.data$ | async as data">
+  <mat-tab-group
+    mat-align-tabs="center"
+    (selectedTabChange)="onTabChange($event)"
+    color="accent"
+  >
+    <mat-tab
+      *ngFor="let item of this.DATA | keyvalue"
+      [label]="item.value.name | uppercase"
+    >
+      <div class="center p3">
+        <h1> {{ data.name | titlecase}} </h1>
+        <h1> {{ data.expression }} </h1>
+        <img width="300px" height="400px" [src]="data.imageUrl" alt="image">
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>

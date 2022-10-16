@@ -1,0 +1,58 @@
+.circle-timer {
+  display: flex;
+  width: 100% !important;
+  align-items: center;
+
+  .timer {
+    display: flex;
+    width: 100%;
+    // max-width: 60px;
+    width: 45px;
+  }
+
+  .svg {
+    height: 100%;
+    width: 100%;
+    min-width: 40px;
+    transform: scaleX(-1) rotateY(180deg);
+  }
+
+  .circle {
+    fill: none;
+    stroke: none;
+  }
+
+  .path-elapsed {
+    stroke-width: 8px;
+  }
+
+  .path-remaining {
+    stroke: currentColor;
+    stroke-width: 8px;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+  }
+
+  .label {
+    font-size: 1.1875rem;
+    min-width: 18px;
+    margin: auto 0px;
+    position: relative;
+    left: -28px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .side-note {
+    font-size: 0.75rem;
+    text-align: left;
+  }
+
+  .cancelText {
+    width: auto;
+    font-size: 0.75rem;
+    padding-left: 20px;
+  }
+}

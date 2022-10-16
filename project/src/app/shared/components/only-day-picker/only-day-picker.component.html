@@ -1,0 +1,60 @@
+<div class="">
+  <h3 class="" *ngIf="this.title">{{ this.title }}</h3>
+
+  <div class="" *ngIf="this.availableDays">
+    <ul>
+      <li
+        class=""
+        *ngFor="let dayRow of this.availableDays;"
+      >
+        <!-- 如果 Mode 是 單選 -->
+        <ng-container *ngIf="this.pickMode === 'single'">
+          <p
+            *ngFor="let day of dayRow;"
+            [class.this2]="this.selectedDay === day"
+            (click)="onSelectDay(day)"
+          >
+            {{ day }}
+          </p>
+        </ng-container>
+
+        <!-- 如果 Mode 是 多選 -->
+        <ng-container *ngIf="this.pickMode === 'multi'">
+          <p
+            *ngFor="let day of dayRow;"
+            [class.this2]="checkIfSelected(day)"
+            (click)="onSelectDay(day)"
+          >
+            {{ day }}
+          </p>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 如果有其他文案 -->
+  <ng-container *ngIf="note">
+    <p class=""></p>
+
+    <p class="">{{ note }}</p>
+  </ng-container>
+
+  <p class=""></p>
+
+  <div class="">
+    <a
+      appRippleButton
+      href="javascript:void(0)"
+      class="btn w"
+      (click)="onCancel()"
+      >取消</a
+    >
+    <a
+      appRippleButton
+      href="javascript:void(0)"
+      class="btn"
+      (click)="onConfirm()"
+      >確定</a
+    >
+  </div>
+</div>

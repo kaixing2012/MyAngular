@@ -1,0 +1,7 @@
+<input
+  type="text"
+  [value]="this.value ? this.value : ''"
+  (focus)="onFocus()"
+  (keyup)="onKey($event.target.value)"
+  (blur)="onBlur()"
+/>

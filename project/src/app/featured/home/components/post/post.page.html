@@ -1,0 +1,66 @@
+<ng-container *ngIf="posts$ | async as Posts">
+  <ng-container *ngIf="Posts.status === 'SUCCESS'">
+    <div *ngFor="let post of Posts.collection.data | keyvalue: kvUtil.unsortedOrder; let inx = index;">
+
+      <div class="py2" *ngIf="inx !== 0"></div>
+
+      <mat-card>
+        <mat-card-header>
+          <!-- <div mat-card-avatar></div> -->
+          <mat-card-title>{{ post.value.TITLE }}</mat-card-title>
+
+          <mat-card-subtitle>Post {{ post.value.ID }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+
+        <mat-card-content>
+          <p>{{ post.value.BODY }}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+          <div class="flex justify-between">
+            <div>
+              <button mat-button color="warn">REPORT</button>
+            </div>
+
+            <div>
+              <button mat-button color="accent">LIKE</button>
+              <button mat-button color="accent">SHARE</button>
+            </div>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="py1"></div>
+
+    <div class="flex justify-between">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="onPrevious(Posts.collection.meta.pagination.page)"
+      >
+        Previous
+      </button>
+
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="onNext()"
+      >
+        Next
+      </button>
+    </div>
+
+    <div class="py1"></div>
+  </ng-container>
+
+  <ng-container *ngIf="Posts.status === 'LOADING'">
+    <app-tai-chi-loading></app-tai-chi-loading>
+  </ng-container>
+
+  <ng-container *ngIf="Posts.status === 'FAILURE'">
+    <h1>Something went wrong...</h1>
+  </ng-container>
+</ng-container>
