@@ -1,52 +1,50 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark navbar-scroll">
-  <div class="container-fluid">
-    <a class="navbar-brand h1">Edward Y. Rogers</a>
+<div class="clearfix">
+  <div class="col-11 mx-auto">
+    <div class="clearfix">
+      <div
+        class="sm-col sm-col-12 md-col-3 lg-col pt2 sticky"
+        style="top: 4.5rem"
+      >
+        <!-- <mat-card></mat-card> -->
+      </div>
 
-    <div
-      class="collapse navbar-collapse"
-      id="appNavBar"
-      mdbCollapse
-      #appNavBar="mdbCollapse"
-    >
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">About</a>
-        </li>
-      </ul>
-    </div>
+      <div class="sm-col sm-col-12 md-col-6 lg-col pt2">
+        <app-post></app-post>
+      </div>
 
-    <button
-      class="navbar-toggler ms-auto"
-      type="button"
-      (click)="appNavBar.toggle()"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-  </div>
-</nav>
-
-<div style="height: 100vh">
-  <div class="mask text-white">
-    <div
-      class="container d-flex justify-content-center align-items-center text-center h-100"
-    >
-      <div>
-        <h1 class="mb-3">Welcome</h1>
-        <form [formGroup]="form">
-          <app-ccy-amt-input
-            formControlName="ccy"
-            [id]="'ccy'"
-            [class]="'form-control'"
-            [placeholder]="'請輸入金額'"
-            [decimalPlace]="2"
-            [minAmt]="0"
-            (blur)="onBlurGetFeeInfo()"
-          >
-          </app-ccy-amt-input>
-        </form>
+      <div
+        class="sm-col sm-col-12 md-col-3 lg-col py2 sticky"
+        style="top: 4.5rem"
+      >
+        <!-- <mat-card></mat-card> -->
       </div>
     </div>
   </div>
 </div>
+
+<!-- <button (click)="two()">two</button>
+<button (click)="zero()">zero</button>
+
+<form [formGroup]="form">
+  <app-ccy-amt-input formControlName="ccy" [decimalPlace]="decimalPlace" [minAmt]="5" [maxAmt]="10000"></app-ccy-amt-input>
+  <button (click)="submit()">Submit</button>
+  <button (click)="empty()">Empty</button>
+  <br>
+  <button (click)="increase()">Increase</button>
+  <button (click)="decrease()">Decrease</button>
+</form> -->
+
+<!-- <app-only-day-picker [title]="'每月扣款日期'" [pickMode]="'multi'" [dayLimit]="12"></app-only-day-picker> -->
+
+<!-- <app-circle-counter
+  style="margin-right: auto; width: 100%"
+  [timeLimit]="10"
+  [timerSize]="40"
+  [color]="'#F04553'"
+  [sideNote]="'剩餘時間'"
+  [restartName]="'重新試算'"
+  [switcher]="timerSwitcher$"
+  (tick)="onTimeCheck($event)"
+  (restart)="onResetTimer()"
+>
+</app-circle-counter> -->

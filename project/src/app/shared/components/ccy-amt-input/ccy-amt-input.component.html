@@ -1,24 +1,11 @@
-<mdb-form-control class="form-white">
-  <input
-    #ccyAmtInput
-    type="text"
-    [id]="id"
-    [class]="class"
-    [style]="style"
-    mdbInput
-    appThousandthsInputFormat
-    appDecimalPlaceInputLimit
-    appInputLengthLimit
-    appChineseInputLimit
-    [value]="value"
-    [thousandths]="thousandths"
-    [disabled]="disabled"
-    [placeholder]="placeholder"
-    [decimalPlace]="decimalPlace"
-    [maxLength]="maxLength"
-    [isMaxLenIncludedDecimals]="isMaxLenIncludedDecimals"
-    (blur)="onBlur()"
-  />
-
-  <label mdbLabel class="form-label" [for]="id">{{ placeholder }}</label>
-</mdb-form-control>
+<input #ccyAmtInput
+  type="text"
+  [value]="value"
+  [disabled]="disabled"
+  [placeholder]="placeholder"
+  (keyup)="onKeyUp($event)"
+  appDecimalPlaceInputLimit
+  [decimalPlace]="this.decimalPlace"
+  appChineseInputLimit
+  (blur)="onBlur()"
+>

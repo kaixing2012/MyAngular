@@ -2,7 +2,7 @@
  * 小數點位數輸入限制 Directive
  */
 
-import { Directive, ElementRef, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { BaseInputLimitDirective } from './base-input-limit.directive';
 
 @Directive({
@@ -12,9 +12,7 @@ export class DecimalPlaceInputLimitDirective extends BaseInputLimitDirective imp
 
   @Input() decimalPlace = 0;
 
-  constructor(
-    override readonly elRef: ElementRef
-  ) {
+  constructor(readonly elRef: ElementRef) {
     super(elRef);
   }
 
@@ -46,17 +44,7 @@ export class DecimalPlaceInputLimitDirective extends BaseInputLimitDirective imp
    * KeyDown 事件
    * @param event 鍵盤事件
    */
-  @HostListener('keydown', ['$event']) onKeyDown(event: KeyboardEvent): void {
-    if (
-      (this.specialKeys.indexOf(event.key) !== -1) || // Allow special events
-      (this.acvxKeys.indexOf(event.key) !== -1 && event.ctrlKey) || // Allow: Ctrl+?
-      (this.acvxKeys.indexOf(event.key) !== -1 && event.metaKey) || // Allow: Cmd+? (Mac)
-      (!this.regex)
-    ) {
-      return;
-    }
-
-    // 取得當前值 且不包含千分位
+  performKeyDown(event: KeyboardEvent): void {
     const currentVal = this.elRef.nativeElement.value
       .toString()
       .replace(/,/g, '');
@@ -73,4 +61,9 @@ export class DecimalPlaceInputLimitDirective extends BaseInputLimitDirective imp
       event.preventDefault();
     }
   }
+
+  // 非實作 Methods
+  performCompositionStart(event: CompositionEvent): void { }
+  performCompositionUpdate(event: CompositionEvent): void { }
+  performCompositionEnded(event: CompositionEvent): void { }
 }
