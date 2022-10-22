@@ -1,11 +1,16 @@
 <input #ccyAmtInput
   type="text"
+  [class]="class"
+  [style]="style"
+  appThousandthsInputFormat
+  appDecimalPlaceInputLimit
+  appInputLengthLimit
+  appChineseInputLimit
   [value]="value"
   [disabled]="disabled"
   [placeholder]="placeholder"
-  (keyup)="onKeyUp($event)"
-  appDecimalPlaceInputLimit
-  [decimalPlace]="this.decimalPlace"
-  appChineseInputLimit
+  [decimalPlace]="decimalPlace"
+  [maxLength]="maxLength"
+  [isMaxLenIncludedDecimals]="isMaxLenIncludedDecimals"
   (blur)="onBlur()"
 >

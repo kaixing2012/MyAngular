@@ -1,6 +1,3 @@
-/**
- * 圓形倒數器 Component
- */
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, Input,
   OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild
@@ -69,8 +66,8 @@ export class CircleCountDownComponent implements OnChanges, OnInit, OnDestroy {
 
   // 宣告計時器時間
   private timeLeft: number;
-  // private timeWhenPause: number;
-  // private timeRecorded: number;
+  private timeWhenPause: number;
+  private timeRecorded: number;
 
   // 宣告計時器原始倒數總時間
   private originalLimit: number;
@@ -92,31 +89,30 @@ export class CircleCountDownComponent implements OnChanges, OnInit, OnDestroy {
   constructor(
     private readonly changeDetector: ChangeDetectorRef
   ) {
-
     // this.platform.ready()
     //   .then(() => {
     //     // 當APP退到背景時(Android, IOS)
     //     // 螢幕鎖屏時(only Android)
     //     document.addEventListener('pause', () => {
-    //       console.log('CircleCountDownComponent Going Background');
+    //       this.debug('CircleCountDownComponent Going Background');
 
     //       setTimeout(() => {
     //         // 紀錄當前timestamp
     //         this.timeWhenPause = Math.floor(Date.now());
     //         this.timeRecorded = this.timeLeft;
 
-    //         console.log('CircleCountDownComponent Set Time When Pause', this.timeLeft);
+    //         this.debug('CircleCountDownComponent Set Time When Pause', this.timeLeft);
     //       }, 0);
     //     });
     //     // 螢幕鎖屏時(only IOS)
     //     document.addEventListener('resign', () => {
-    //       console.log('CircleCountDownComponent Going Background');
+    //       this.debug('CircleCountDownComponent Going Background');
 
     //       setTimeout(() => {
     //         this.timeWhenPause = Math.floor(Date.now());
     //         this.timeRecorded = this.timeLeft;
 
-    //         console.log('CircleCountDownComponent Set Time When Pause', this.timeLeft);
+    //         this.debug('CircleCountDownComponent Set Time When Pause', this.timeLeft);
     //       }, 0);
     //     });
     //     // 當APP從背景到前景狀態時(Android, IOS)
@@ -129,7 +125,7 @@ export class CircleCountDownComponent implements OnChanges, OnInit, OnDestroy {
     //       this.checkIfSwitchOffTimer();
     //       this.circleDasharray = this.getCircleDasharray();
 
-    //       console.log('CircleCountDownComponent Back To frontground', this.timeLeft);
+    //       this.debug('CircleCountDownComponent Back To frontground', this.timeLeft);
     //     });
     //     // 解除鎖屏時(only IOS)
     //     document.addEventListener('active', () => {
@@ -139,7 +135,7 @@ export class CircleCountDownComponent implements OnChanges, OnInit, OnDestroy {
     //       this.checkIfSwitchOffTimer();
     //       this.circleDasharray = this.getCircleDasharray();
 
-    //       console.log('CircleCountDownComponent Back To frontground', this.timeLeft);
+    //       this.debug('CircleCountDownComponent Back To frontground', this.timeLeft);
     //     });
     //   })
     //   .catch();
