@@ -1,26 +1,17 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
+@import "./layout.scss";
 @import "@angular/material/theming";
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat-core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$project-light-primary: mat-palette($mat-grey, 200, 100 ,900);
-$project-dark-primary: mat-palette($mat-grey, 800, 100 ,900);
+$project-light-primary: mat-palette($mat-grey, 100, 100 ,900);
+$project-dark-primary: mat-palette($mat-grey, 900, 100 ,900);
 
-$project-light-accent: mat-palette($mat-blue-gray, 400, 100 ,900);
-$project-dark-accent: mat-palette($mat-amber, 600, 100 ,900);
+$project-light-accent: mat-palette($mat-grey, 900, 100 ,900);
+$project-dark-accent: mat-palette($mat-grey, 100, 100 ,900);
 
-$project-light-warn: mat-palette($mat-red, 200, 100 ,900);
-$project-dark-warn: mat-palette($mat-red, 600, 100 ,900);
+$project-light-warn: mat-palette($mat-red, 100, 100 ,900);
+$project-dark-warn: mat-palette($mat-red, 900, 100 ,900);
 
-// Create the theme object (a Sass map containing all of the palettes).
 $project-light-theme: mat-light-theme(
   $project-light-primary,
   $project-light-accent,
@@ -33,9 +24,6 @@ $project-dark-theme: mat-dark-theme(
   $project-dark-warn
 );
 
-// Material Design
-@import "./bass-css/bass.css";
-
 html,
 body {
   height: 100%;
@@ -47,9 +35,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 .project-light-theme {
   @include angular-material-theme($project-light-theme);
 
@@ -80,8 +65,4 @@ body {
   .text-warn {
     color: mat-color($project-dark-warn) !important;
   }
-}
-
-.sticky {
-  position: sticky;
 }

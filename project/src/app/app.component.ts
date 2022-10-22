@@ -1,59 +1,34 @@
-import { Store } from '@ngrx/store';
-import { OverlayContainer } from '@angular/cdk/overlay';
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { environment } from '../environments/environment';
-import { Subject, Subscription } from 'rxjs';
+import { ThemeService } from '@shared/services/theme.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+
 })
-export class AppComponent implements OnInit {
-  @HostBinding('class') cssClass: any;
+export class AppComponent implements OnInit, AfterViewChecked {
 
-  title = 'Edward\'s Angular Demo';
+  title = 'Edward Y. Rogers';
 
-  env: typeof environment = environment;
-
-  isDarkMode = false;
-
-  testSubject = new Subject();
-  subscription = new Subscription();
+  currentTheme$: Observable<string>;
 
   constructor(
     private readonly titleService: Title,
-    private readonly overlayContainer: OverlayContainer,
-    private readonly store: Store
+    private readonly themeService: ThemeService,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
+    this.currentTheme$ = this.themeService.currentTheme$;
+
     this.titleService.setTitle(this.title);
-
-    this.setThemeMode('dark');
   }
 
-  setThemeMode(mode: string): void {
-
-    if (mode === 'light') {
-      this.overlayContainer.getContainerElement().classList.remove('project-dark-theme');
-
-      this.overlayContainer.getContainerElement().classList.add('project-light-theme');
-      this.cssClass = 'project-light-theme';
-
-      this.isDarkMode = false;
-    } else {
-      this.overlayContainer.getContainerElement().classList.remove('project-light-theme');
-
-      this.overlayContainer.getContainerElement().classList.add('project-dark-theme');
-      this.cssClass = 'project-dark-theme';
-
-      this.isDarkMode = true;
-    }
-  }
-
-  onModeClick(mode: string): void {
-    this.setThemeMode(mode);
+  ngAfterViewChecked(): void {
+    this.themeService.themeSwitcher$.next(undefined);
+    this.changeDetectorRef.detectChanges();
   }
 }

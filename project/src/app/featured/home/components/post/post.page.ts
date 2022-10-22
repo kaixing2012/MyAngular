@@ -19,14 +19,16 @@ export class PostPage implements OnInit, AfterViewInit {
 
   kvUtil = KeyValueUtil;
 
-  constructor(private readonly postService: PostService) {}
+  constructor(
+    private readonly postService: PostService
+  ) { }
 
   ngOnInit() {
     this.posts$ = this.postSubject.pipe(
       switchMap(() => this.postService.getPosts(this.pageNum)
         .pipe(
           switchMap((res) => {
-            if (res.status === 'SUCCESS'){
+            if (res.status === 'SUCCESS') {
               this.pageNum = res.collection.meta.pagination.links.next.split('?')[1];
             }
 

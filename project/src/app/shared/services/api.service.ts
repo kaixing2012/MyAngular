@@ -8,7 +8,9 @@ import { AppState } from '@store/app/app.state';
 import { DataRoomAction } from '@store/data-room/data-room.action';
 import { Observable, of, switchMap } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ApiService {
 
   constructor(

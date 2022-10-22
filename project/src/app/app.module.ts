@@ -8,7 +8,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SharedComponentModule } from '@shared/components/shared-component.module';
 import { SharedDirectiveModule } from '@shared/directives/shared-directive.module';
 import { SharedPipeModule } from '@shared/pipes/shared-pipe.module';
-import { ApiService } from '@shared/services/api.service';
 import { AppState } from '@store/app/app.state';
 import { DataRoomEffect } from '@store/data-room/data-room.effect';
 import { dataRoomReducer } from '@store/data-room/data-room.reducer';
@@ -43,7 +42,7 @@ const animatConfig = {
     SharedDirectiveModule,
     SharedPipeModule
   ],
-  providers: [ApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

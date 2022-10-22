@@ -1,46 +1,4 @@
-<main class="mat-app-background">
-  <nav class="sticky top-0 left-0 right-0 z2">
-    <mat-toolbar color="primary">
-      <mat-toolbar class="justify-between" color="primary">
-        <a class="h1 bold text-decoration-none text-accent" routerLink="home">
-          Angular Demo <span *ngIf="env.scope" > - ( {{ env.scope | uppercase }} )</span>
-        </a>
-
-        <div>
-          <a mat-icon-button routerLink="home" color="accent">
-            <mat-icon>home</mat-icon>
-          </a>
-
-          <a mat-icon-button routerLink="attempts" color="accent">
-            <mat-icon>gamepad</mat-icon>
-          </a>
-
-          <button mat-icon-button color="accent" [matMenuTriggerFor]="modeMenu">
-            <mat-icon>lightbulb</mat-icon>
-          </button>
-
-          <mat-menu #modeMenu>
-            <button *ngIf="this.isDarkMode" mat-menu-item (click)="onModeClick('light')">
-              <mat-icon color="accent">light_mode</mat-icon>
-              <span>Light Mode</span>
-            </button>
-
-            <button *ngIf="!this.isDarkMode" mat-menu-item (click)="onModeClick('dark')">
-              <mat-icon color="accent">dark_mode</mat-icon>
-              <span>Dark Mode</span>
-            </button>
-          </mat-menu>
-        </div>
-      </mat-toolbar>
-    </mat-toolbar>
-  </nav>
-
-  <section class="p1">
-    <router-outlet></router-outlet>
-  </section>
-
-  <footer>
-
-  </footer>
-</main>
+<ng-component *ngIf="currentTheme$ | async as theme" [ngClass]="theme">
+  <router-outlet></router-outlet>
+</ng-component>
 

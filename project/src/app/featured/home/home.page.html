@@ -1,38 +1,69 @@
-<div class="clearfix">
-  <div class="col-11 mx-auto">
+<header>
+  <nav class="sticky top-0 left-0 right-0 z2">
+    <mat-toolbar class="justify-between">
+      <a class="h1 bold text-decoration-none text-accent" routerLink="home">
+        Edward Y. Rogers
+      </a>
+  
+      <div>
+        <a mat-icon-button routerLink="home">
+          <mat-icon>home</mat-icon>
+        </a>
+  
+        <a mat-icon-button routerLink="attempts">
+          <mat-icon>gamepad</mat-icon>
+        </a>
+        
+        <ng-container *ngIf="currentTheme$ | async as theme">
+          <button mat-icon-button [matMenuTriggerFor]="modeMenu">
+            <mat-icon>lightbulb</mat-icon>
+          </button>
+    
+          <mat-menu #modeMenu>
+            <button  mat-menu-item (click)="onThemeSwitch(theme)">
+              <mat-icon>{{ THEME_OPTIONS[theme].icon }}</mat-icon>
+              <span>{{ THEME_OPTIONS[theme].label }}</span>
+            </button>
+          </mat-menu>
+        </ng-container>
+      </div>
+    </mat-toolbar>
+  </nav>
+</header>
+
+<main>
+  <section>
     <div class="clearfix">
-      <div
-        class="sm-col sm-col-12 md-col-3 lg-col pt2 sticky"
-        style="top: 4.5rem"
-      >
-        <!-- <mat-card></mat-card> -->
-      </div>
+      <div class="col-11 mx-auto">
+        <div class="clearfix">
+          <div class="sm-col sm-col-12 md-col-3 lg-col py2 sticky" style="top: 4.5rem">
+            <mat-card></mat-card>
+          </div>
 
-      <div class="sm-col sm-col-12 md-col-6 lg-col pt2">
-        <app-post></app-post>
-      </div>
+          <div class="sm-col sm-col-12 md-col-6 lg-col py2">
+            <mat-card></mat-card>
+            <app-post></app-post>
+          </div>
 
-      <div
-        class="sm-col sm-col-12 md-col-3 lg-col py2 sticky"
-        style="top: 4.5rem"
-      >
-        <!-- <mat-card></mat-card> -->
+          <div class="sm-col sm-col-12 md-col-3 lg-col py2 sticky" style="top: 4.5rem">
+            <mat-card></mat-card>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
+</main>
 
-<!-- <button (click)="two()">two</button>
-<button (click)="zero()">zero</button>
+<footer></footer>
 
-<form [formGroup]="form">
+<!-- <form [formGroup]="form">
   <app-ccy-amt-input formControlName="ccy" [decimalPlace]="decimalPlace" [minAmt]="5" [maxAmt]="10000"></app-ccy-amt-input>
   <button (click)="submit()">Submit</button>
   <button (click)="empty()">Empty</button>
   <br>
   <button (click)="increase()">Increase</button>
   <button (click)="decrease()">Decrease</button>
-</form> -->
+</form>  -->
 
 <!-- <app-only-day-picker [title]="'每月扣款日期'" [pickMode]="'multi'" [dayLimit]="12"></app-only-day-picker> -->
 
