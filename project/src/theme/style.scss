@@ -1,28 +1,20 @@
-@import "./layout.scss";
 @import "@angular/material/theming";
+
+@import "bootstrap/bootstrap.scss";
+@import "custom/custom.scss";
 
 @include mat-core();
 
 $project-light-primary: mat-palette($mat-grey, 100, 100 ,900);
-$project-dark-primary: mat-palette($mat-grey, 900, 100 ,900);
-
 $project-light-accent: mat-palette($mat-grey, 900, 100 ,900);
-$project-dark-accent: mat-palette($mat-grey, 100, 100 ,900);
-
 $project-light-warn: mat-palette($mat-red, 100, 100 ,900);
-$project-dark-warn: mat-palette($mat-red, 900, 100 ,900);
 
-$project-light-theme: mat-light-theme(
-  $project-light-primary,
-  $project-light-accent,
-  $project-light-warn
-);
-
-$project-dark-theme: mat-dark-theme(
-  $project-dark-primary,
-  $project-dark-accent,
-  $project-dark-warn
-);
+$project-dark-primary: #45415E;
+$project-dark-secondary: #5B7D87;
+$project-dark-tertiary: #2B425E;
+$project-dark-accent: #91B3BC;
+$project-dark-heavy: #2E323C;
+// $project-dark-warn: mat-palette($mat-red, 900, 100 ,900);
 
 html,
 body {
@@ -36,8 +28,6 @@ body {
 }
 
 .project-light-theme {
-  @include angular-material-theme($project-light-theme);
-
   .text-primary {
     color: mat-color($project-light-primary) !important;
   }
@@ -46,23 +36,52 @@ body {
     color: mat-color($project-light-accent) !important;
   }
 
-  .text-warn {
-    color: mat-color($project-light-warn) !important;
-  }
+  // .text-warn {
+  //   color: mat-color($project-light-warn) !important;
+  // }
 }
 
 .project-dark-theme {
-  @include angular-material-theme($project-dark-theme);
+  .bg-primary {
+    background-image: radial-gradient($project-dark-primary 1%, $project-dark-heavy 99%) !important;
+  }
+
+  .bg-secondary {
+    background-image: radial-gradient($project-dark-secondary 1%, $project-dark-heavy 99%) !important;
+  }
+
+  .bg-tertiary {
+    background-image: radial-gradient($project-dark-tertiary 1%, $project-dark-heavy 99%) !important;
+  }
+
+  .bg-accent {
+    background-color: $project-dark-accent !important;
+  }
+
+  .bg-heavy {
+    background-color: $project-dark-heavy !important;
+  }
 
   .text-primary {
-    color: mat-color($project-dark-primary) !important;
+    color: $project-dark-primary !important;
+  }
+
+  .text-secondary {
+    color: $project-dark-secondary !important;
+  }
+
+  .text-tertiary {
+    color: $project-dark-tertiary !important;
   }
 
   .text-accent {
-    color: mat-color($project-dark-accent) !important;
+    color: $project-dark-accent !important;
   }
-
-  .text-warn {
-    color: mat-color($project-dark-warn) !important;
+  
+  .text-heavy {
+    color: $project-dark-heavy !important;
   }
+  // .text-warn {
+  //   color: $project-dark-warn !important;
+  // }
 }

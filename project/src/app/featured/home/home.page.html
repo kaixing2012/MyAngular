@@ -1,54 +1,48 @@
-<header>
-  <nav class="sticky top-0 left-0 right-0 z2">
-    <mat-toolbar class="justify-between">
-      <a class="h1 bold text-decoration-none text-accent" routerLink="home">
-        Edward Y. Rogers
-      </a>
+<header class="position-fixed top-0 start-0 end-0">
+  <mat-toolbar class="py-4">
+    <mat-toolbar-row class="justify-content-between">
+      <div>
+        <span class="cursor-default text-accent">
+          Edward Y. Rogers
+        </span>
+      </div>
   
       <div>
-        <a mat-icon-button routerLink="home">
-          <mat-icon>home</mat-icon>
-        </a>
-  
-        <a mat-icon-button routerLink="attempts">
-          <mat-icon>gamepad</mat-icon>
-        </a>
-        
-        <ng-container *ngIf="currentTheme$ | async as theme">
-          <button mat-icon-button [matMenuTriggerFor]="modeMenu">
-            <mat-icon>lightbulb</mat-icon>
-          </button>
-    
-          <mat-menu #modeMenu>
-            <button  mat-menu-item (click)="onThemeSwitch(theme)">
-              <mat-icon>{{ THEME_OPTIONS[theme].icon }}</mat-icon>
-              <span>{{ THEME_OPTIONS[theme].label }}</span>
-            </button>
-          </mat-menu>
-        </ng-container>
+        <span class="mx-3 cursor-pointer text-accent" (click)="onScrollToSection(top)">Home</span>
+        <span class="mx-3 cursor-pointer text-accent" (click)="onScrollToSection(featured)">Featured</span>
+        <span class="mx-3 cursor-pointer text-accent" (click)="onScrollToSection(projects)">Projects</span>
       </div>
-    </mat-toolbar>
-  </nav>
+    </mat-toolbar-row>
+  </mat-toolbar>
 </header>
 
 <main>
-  <section>
-    <div class="clearfix">
-      <div class="col-11 mx-auto">
-        <div class="clearfix">
-          <div class="sm-col sm-col-12 md-col-3 lg-col py2 sticky" style="top: 4.5rem">
-            <mat-card></mat-card>
-          </div>
+  <ng-container *ngIf="currentTheme$ | async as theme">
+    <button mat-icon-button class="position-absolute bg-accent text-primary" style="bottom: 5%; right: 5%;" [matMenuTriggerFor]="modeMenu">
+      <mat-icon calss="text-primary">lightbulb</mat-icon>
+    </button>
 
-          <div class="sm-col sm-col-12 md-col-6 lg-col py2"></div>
+    <mat-menu #modeMenu>
+      <button mat-menu-item (click)="onThemeSwitch(theme)">
+        <mat-icon>{{ THEME_OPTIONS[theme].icon }}</mat-icon>
+        <span>{{ THEME_OPTIONS[theme].label }}</span>
+      </button>
+    </mat-menu>
+  </ng-container>
 
-          <div class="sm-col sm-col-12 md-col-3 lg-col py2 sticky" style="top: 4.5rem">
-            <mat-card></mat-card>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div #test class="d-flex vw-100 vh-100" style="overflow:scroll;" (wheel)="onScroll($event)">
+    <section #top class="min-vw-100 bg-primary">
+      <!-- <p class="h1">Home</p> -->
+    </section>
+  
+    <section #featured class="min-vw-100 bg-secondary">
+      <!-- <p class="h1">Featured</p> -->
+    </section>
+  
+    <section #projects class="min-vw-100 bg-tertiary">
+      <!-- <p class="h1">Projects</p> -->
+    </section>
+  </div>
 </main>
 
 <footer></footer>

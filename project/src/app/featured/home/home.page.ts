@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { TimerOutput, TimeSwitcherState } from '@shared/components/circle-countdown/circle-countdown.component';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ThemeService, THEME_MODE, THEME_OPTIONS } from '@shared/services/theme.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +13,7 @@ export class HomePage implements OnInit {
 
   currentTheme$: Observable<string>;
 
-  timerSwitcher$ = new BehaviorSubject<TimeSwitcherState>({isStartToTick: true});
-
-  form = new FormGroup({
-    test: new FormControl(0, Validators.compose([Validators.required]))
-  });
+  @ViewChild('test') widgetsContent: ElementRef<HTMLElement>;
 
   constructor(
     private readonly themeService: ThemeService
@@ -35,13 +29,20 @@ export class HomePage implements OnInit {
     );
   }
 
-  onBlur(): void {
-
+  onScrollToSection(el: HTMLElement): void {
+    el.scrollIntoView({
+      behavior: 'smooth'
+    });
   }
 
-  onTimeCheck(event: TimerOutput): void {
-    if (event.tickVal < 1) {
+  onScroll(event: WheelEvent) {
+    const currentPos = this.widgetsContent.nativeElement.scrollLeft;
 
-    }
+    this.widgetsContent.nativeElement.scrollTo({
+      left: (currentPos + event.deltaY),
+      behavior: 'auto'
+    });
+
+    event.preventDefault();
   }
 }
